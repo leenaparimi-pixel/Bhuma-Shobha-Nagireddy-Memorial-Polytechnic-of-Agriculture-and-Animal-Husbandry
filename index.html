@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>BSNRM Polytechnic</title>
+
+<style>
+
+/* NAVBAR */
+.navbar{
+    display:flex;
+    justify-content:center;
+    gap:30px;
+    background: linear-gradient(to right, #28a428, #187bcd);
+    padding:12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    border-top: 2px solid rgba(255,255,255,0.3);
+    position:sticky;
+    top:0;
+}
+
+.navbar a{
+    color:white;
+    text-decoration:none;
+    font-weight:bold;
+    padding:6px 12px;
+    cursor:pointer;
+    border-radius:6px;
+}
+
+.navbar a:hover{
+    background:rgba(255,255,255,0.25);
+}
+
+/* SLIDER CONTAINER (CENTERED FIX) */
+.slider-container{
+    width:90%;
+    max-width:1000px;
+    height:450px;
+    margin:30px auto;
+    position:relative;
+    overflow:hidden;
+    border-radius:10px;
+}
+
+/* SLIDER IMAGES */
+.slide{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    position:absolute;
+    top:0;
+    left:0;
+    opacity:0;
+    animation:fade 36s infinite;
+}
+
+/* timing */
+.slide:nth-child(1){ animation-delay:0s; }
+.slide:nth-child(2){ animation-delay:4s; }
+.slide:nth-child(3){ animation-delay:8s; }
+.slide:nth-child(4){ animation-delay:12s; }
+.slide:nth-child(5){ animation-delay:16s; }
+.slide:nth-child(6){ animation-delay:20s; }
+.slide:nth-child(7){ animation-delay:24s; }
+.slide:nth-child(8){ animation-delay:28s; }
+.slide:nth-child(9){ animation-delay:32s; }
+
+@keyframes fade{
+    0%{opacity:0;}
+    10%{opacity:1;}
+    25%{opacity:1;}
+    35%{opacity:0;}
+    100%{opacity:0;}
+}
+
+/* SECTIONS */
+.section{
+    display:none;
+    padding:40px;
+    text-align:center;
+}
+#about{
+    text-align:left;
+    max-width:900px;
+    margin:40px auto;
+    line-height:1.7;
+
+    background:#ffffff;
+    padding:30px;
+    border-radius:10px;
+    box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+#about h2{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+#about h4{
+    margin-top:20px;
+    color:black;
+}
+
+#about p{
+    margin-bottom:15px;
+    font-size:15px;
+}
+
+#admissions{
+    text-align:left;
+    max-width:900px;
+    margin:40px auto;
+    line-height:1.7;
+
+    background:#ffffff;
+    padding:30px;
+    border-radius:10px;
+    box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+#admissions h2{
+    text-align:center;
+}
+
+#admissions h4{
+    margin-top:20px;
+    color:black;
+}
+
+#admissions p{
+    margin-bottom:15px;
+    font-size:15px;
+}
+/* COURSES GRID */
+.course-container{
+    display:flex;
+    justify-content:center;
+    gap:30px;
+    flex-wrap:wrap;
+    margin-top:20px;
+}
+
+/* CARD STYLE */
+.course-card{
+    width:250px;
+    background:#ffffff;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 0 10px rgba(0,0,0,0.15);
+    cursor:pointer;
+    transition:0.3s;
+    text-align:center;
+}
+
+.course-card:hover{
+    transform:scale(1.05);
+}
+
+/* COURSE DETAILS */
+.course-details{
+    display:none;
+    max-width:800px;
+    margin:20px auto;
+    background:#fff;
+    padding:25px;
+    border-radius:10px;
+    box-shadow:0 0 10px rgba(0,0,0,0.1);
+    text-align:left;
+}
+
+.back-btn{
+    margin-top:15px;
+    display:inline-block;
+    padding:8px 15px;
+    background:#187bcd;
+    color:white;
+    border-radius:5px;
+    cursor:pointer;
+}
+.course-card img{
+    width:100%;
+    height:150px;
+    object-fit:cover;
+    border-radius:10px;
+    margin-bottom:10px;
+}
+.view-btn{
+    margin-top:10px;
+    padding:8px 14px;
+    background:#187bcd;
+    color:white;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+.view-btn:hover{
+    background:#125a9c;
+}
+.ticker-bar{
+    background:red;
+    color:white;
+    font-weight:bold;
+    font-size:16px;
+    overflow:hidden;
+    white-space:nowrap;
+    padding:8px;
+    position:relative;
+}
+
+.ticker-track{
+    display:flex;
+    width:max-content;
+    animation:scrollLeft 12s linear infinite;
+}
+
+.ticker-track span{
+    padding-right:80px; /* spacing between repeats */
+    white-space:nowrap;
+}
+
+/* KEY: smooth continuous movement */
+@keyframes scrollLeft{
+    0%{
+        transform:translateX(0);
+    }
+    100%{
+        transform:translateX(-25%);
+    }
+}
+#home{ display:block; }
+/* HOME LAYOUT */
+.home-content{
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+    gap:25px;
+    flex-wrap:wrap;
+}
+
+.career-box{
+    width:320px;
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 0 10px rgba(0,0,0,0.15);
+}
+
+.home-para{
+    width:700px;
+    margin:20px auto;
+    line-height:1.8;
+}
+.career-box h2{
+    text-align:center;
+    color:#187bcd;
+    margin-bottom:15px;
+}
+
+.career-box h4{
+    margin-top:15px;
+    color:#28a428;
+}
+
+.career-box ul{
+    padding-left:20px;
+}
+/* CONTACT FOOTER */
+.contact-footer{
+    margin-top:30px;
+    background:linear-gradient(to right, #28a428, #187bcd);
+    color:white;
+    padding:15px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:30px;
+    flex-wrap:wrap;
+    font-size:15px;
+    font-weight:bold;
+}
+
+.contact-footer a{
+    color:white;
+    text-decoration:none;
+    transition:0.3s;
+}
+
+.contact-footer a:hover{
+    color:yellow;
+}
+.insta-icon{
+    width:20px;
+    height:20px;
+    vertical-align:middle;
+    margin-right:6px;
+}
+
+</style>
+
+<script>
+function showSection(id){
+
+    // hide all main sections
+    document.getElementById("home").style.display="none";
+    document.getElementById("about").style.display="none";
+    document.getElementById("admissions").style.display="none";
+    document.getElementById("courses").style.display="none";
+    document.getElementById("contact").style.display="none";
+
+    // also hide course details
+    document.getElementById("agri").style.display="none";
+    document.getElementById("animal").style.display="none";
+
+    // show selected section
+    document.getElementById(id).style.display="block";
+}
+
+function showCourse(id){
+    document.getElementById("courseList").style.display="none";
+    document.getElementById("agri").style.display="none";
+    document.getElementById("animal").style.display="none";
+
+    document.getElementById(id).style.display="block";
+}
+
+function backToCourses(){
+    document.getElementById("courseList").style.display="flex";
+    document.getElementById("agri").style.display="none";
+    document.getElementById("animal").style.display="none";
+}
+</script>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div style="background: linear-gradient(to right, #32cd32, #1e90ff); padding:8px; color:white;">
+    <div style="display:flex; align-items:center; justify-content:center; gap:10px;">
+
+    <img style="width:150px;" src="CollegeLogo1.jpeg">
+
+    <!-- TEXT BLOCK -->
+    <div style="text-align:center;">
+        <h1 style="margin:0; line-height:28px;">
+            Bhuma Shobha Nagireddy Memorial <br>
+            Polytechnic of Agriculture and Animal Husbandry
+        </h1>
+
+        <h3 style="margin:5px 0 0 0;">
+            భూమా శోభా నాగిరెడ్డి మెమోరియల్ పాలిటెక్నిక్ ఆఫ్ అగ్రికల్చర్ అండ్ యానిమల్ హస్బెండరీ
+        </h3>
+<p style="text-align:center; font-size:14px;">
+        Affiliated to Acharya N G Ranga Agricultural University, Lam, Guntur <br>
+        and <br>
+        Sri Venkateswara Veterinary University, Tirupati
+    </p>
+
+    </div>
+
+    <img style="width:150px;" src="CollegeLogo2.jpeg">
+
+</div>
+
+    </div>
+
+<!-- NAVBAR -->
+<div class="navbar">
+    <a onclick="showSection('home')">Home</a>
+    <a onclick="showSection('about')">About</a>
+    <a onclick="showSection('admissions')">Admissions</a>
+    <a onclick="showSection('courses')">Courses</a>
+ <a onclick="showSection('contact')">Contact</a>
+</div>
+
+
+<!-- HOME -->
+<div id="home" class="section">
+
+    <!-- SCROLLING ADMISSION BANNER -->
+    <div class="ticker-bar">
+        <div class="ticker-track">
+            <span> Admissions Open for 2026-2027 </span>
+            <span> Admissions Open for 2026-2027 </span>
+            <span> Admissions Open for 2026-2027 </span>
+            <span> Admissions Open for 2026-2027 </span>
+        </div>
+    </div>
+
+    <!-- HOME CONTENT -->
+    <div class="home-content">
+
+        <!-- LEFT SIDE -->
+        <div>
+
+            <!-- SLIDER -->
+            <div class="slider-container">
+                <img class="slide" src="College5.jpg">
+                <img class="slide" src="Collegeimg8.jpeg">
+                <img class="slide" src="Collegeimg1.jpg">
+                <img class="slide" src="Collegeimg6.jpeg">
+                <img class="slide" src="college4.jpeg">
+                <img class="slide" src="college3.jpeg">
+                <img class="slide" src="Collegeimg2.jpeg">
+                <img class="slide" src="Collegeimg9.jpeg">
+                <img class="slide" src="Collegeimg14.jpeg">
+            </div>
+
+            <!-- PARAGRAPH -->
+            <p class="home-para">
+               Bhuma Shobha Nagireddy memorial College is reputed College in Allagadda Founded in memory of Late Smt. Bhuma Shobha Nagireddy.The college is situated on NH-40 (Kurnool to Kadapa road) at a distance of 5 Km from Allagadda. The college has a big campus spreading over an area of 35 acres, in a serene atmosphere.The college is having experienced and dedicated faculty members in order to nurture values and ethics.The success obtained by students of Bhuma group of institutions is a reflection of the tireless efforts, indomitable will, and strong sense of commitment shown by the faculty. Apart from basic knowledge, students are oriented to develop skills, and critical thinking. The college has well-equipped laboratories, large collection of library books, big and well equipped play grounds etc. which enables holistic development of students.
+            </p>
+
+        </div>
+
+        <!-- RIGHT SIDE CAREER COLUMN -->
+        <div class="career-box">
+
+            <h2>Career Opportunities</h2>
+
+            <h3>Agriculture Diploma</h3>
+
+            <ul>
+                <h4>Job opportunities</h4>
+
+                <li>Village Agriculture Assistant (VAA)</li>
+                <li>Agriculture Extension Officer (AEO)</li>
+                <li>Multi Purpose Extension Officer (MPEO)</li>
+                <li>Field Assistant</li>
+                <li>Seed/Fertilizer Inspector Assistant</li>
+                <li>Sales Officer, Field Executive, Farm Supervisor,
+                    Crop Advisor in Fertilizer/Pesticides and Seed Companies</li>
+
+                <h4>Higher Education</h4>
+
+                <li>B.Sc Agriculture / Horticulture / Seed Technology</li>
+                <li>B.A, B.Com, B.Zc, B.B.M and Any degree related to BiPC stream</li>
+            </ul>
+
+            <h3>Animal Husbandry Diploma</h3>
+
+            <ul>
+                <h4>Job opportunities</h4>
+
+                <li>Animal Husbandry Assistant (AHA)</li>
+                <li>Dairy Farm Supervisor</li>
+                <li>Poultry Farm Manager</li>
+                <li>Veterinary Assistant in Pet Clinics, Hatcheries,
+                    Veterinary Medicine companies, Feed companies</li>
+
+                <h4>Higher Education</h4>
+
+                <li>B.A, B.Com, B.Zc, B.B.M and Any degree related to BiPC stream</li>
+            </ul>
+
+        </div>
+
+    </div>
+<!-- CONTACT SECTION -->
+<div class="contact-footer">
+
+    <span>📧 bsnr.ap.alg@gmail.com</span>
+
+    <span>📞 9440777513, 9700675905</span>
+
+    <a href="https://maps.app.goo.gl/sM8NhprTXLGxbvwo6?g_st=aw"
+       target="_blank">
+       📍 Location
+    </a>
+
+   <a href="https://www.instagram.com/bsnrm_college?igsh=dGcwMndzMXE4cmkz"
+   target="_blank">
+
+   <img src="intaicon.jpg" class="insta-icon">
+
+   Instagram
+</a>
+
+</div>
+</div>
+<!-- ABOUT -->
+<div id="about" class="section">
+    <h2>About Us</h2>
+<p style="text-align:center; font-size:14px;">Bhuma Shobha Nagireddy memorial College is reputed College in Allagadda Founded in memory of Late Smt. Bhuma Shobha Nagireddy.The college is situated on NH-40 (Kurnool to Kadapa road) at a distance of 5 Km from Allagadda. The college has a big campus spreading over an area of 35 acres, in a serene atmosphere.The college is having experienced and dedicated faculty members in order to nurture values and ethics.The success obtained by students of Bhuma group of institutions is a reflection of the tireless efforts, indomitable will, and strong sense of commitment shown by the faculty. Apart from basic knowledge, students are oriented to develop skills, and critical thinking. The college has well-equipped laboratories, large collection of library books, big and well equipped play grounds etc. which enables holistic development of students.</p>
+
+<h4>Agriculture Polytechnic</h4>
+    <p>Bhuma Shobha Nagireddy Memorial Polytechnic of Agriculture, Allagadda, has been started in the year 2017 by Late Sri Bhuma Nagireddy garu (Member of Parliament). BSNRM College has obtained good recognition, for quality and innovative education. It is affiliated to Acharya N.G. Ranga Agricultural University,Lam,Guntur.  The college offers course in Diploma in Agriculture with an intake of 40+4= 44 seats. </p>
+</br>
+<h4>Animal Husbandry Polytechnic</h4>
+<p> Bhuma Shobha Nagireddy Memorial Polytechnic of Animal husbandry, has been started in  the year 2019 by Late Sri Bhuma Nagireddy garu (Member of Parliament).Animal Husbandry Polytechnic is affiliated to Sri Venkateswara Veterinary University, Tirupati. The college offers course in Diploma in Animal Husbandry with an intake of 50+5= 55 seats.</p>
+
+
+
+
+</div>
+
+<!-- ADMISSIONS -->
+<div id="admissions" class="section">
+    <h2>Admission Process</h2>
+<h4>Eligibility</h4>
+    <p> Candidates must have passed SSC (from AP Board, CBSE, ICSE, or APOSS) or equivalent.
+</br>Age Limit: 15 to 22 years </p>
+<h4>Selection Criterion</h4>
+<p> Selection is strictly based on the merit of marks obtained in the SSC or equivalent exam.</p>
+ <h4>Seat Allotment</h4>
+<p>Provisional merit lists are released based on 10th-class marks.Selected candidates are called for counseling and document verification.Original documents, including caste certificates, proof of rural background, and local status, must be submitted.</p>
+<h4>Fee Structure</h4>
+<p>Fee Reimbursement provided by the Govt of Andhra Pradesh </p>
+</div>
+<!-- Courses-->
+<div id="courses" class="section">
+
+   
+
+    <!-- COURSE CARDS -->
+   <div id="courseList" class="course-container">
+
+    <!-- AGRICULTURE CARD -->
+    <div class="course-card">
+        <img src="Agriculture.jpg" alt="Agriculture">
+        <h3>Agriculture</h3>
+
+        <button class="view-btn" onclick="showCourse('agri')">
+            View Details
+        </button>
+    </div>
+
+    <!-- ANIMAL HUSBANDRY CARD -->
+    <div class="course-card">
+        <img src="Animal Husbandry.jpeg" alt="Animal Husbandry">
+        <h3>Animal Husbandry</h3>
+
+        <button class="view-btn" onclick="showCourse('animal')">
+            View Details
+        </button>
+    </div>
+
+</div>
+
+    <!-- AGRICULTURE DETAILS -->
+    <div id="agri" class="course-details">
+        <h3>Agriculture Diploma</h3>
+        <h4>Theory</h4>
+<p>
+1. Crop production (Cereals, Pulses, Oilseeds, Fruits and Vegetables)
+</br>2. Soil science and fertility, Manures and Fertilizers
+</br>3. Plant Protection - Pest and disease 
+</br>4. Farm Machinery
+</br>5. Agriculture Economics and Extenstion
+</br>6. Floriculture and Horticulture
+</br>7. Plant Breeding and Seed Production
+</br>8. Land Surverying and Farm Machinery
+</br>9. Basic Chemistry
+</br>10. Modern farming techniques.
+</br>11. Communication Skills and Computers
+</br>12. Medicinal and Aromatic Plants
+</br>13. Plant Biotechnology
+        </p>
+<h4>Practical</h4>
+<p>
+Works on farms
+</br> Operating agricultural tools and machinery
+</br>Nursery and Greenhouse techniques
+</br> Disease and Pest identification
+</br> Visit to Farmers Field and Research centers
+</br> Manures and Fertilizer
+</br> Mushroom Cultivation 
+</p>
+
+        <span class="back-btn" onclick="backToCourses()">Back</span>
+    </div>
+
+    <!-- ANIMAL HUSBANDRY DETAILS -->
+    <div id="animal" class="course-details">
+        <h3>Animal Husbandry Diploma</h3>
+        <p>
+            <h4>Theory</h4>
+<p>
+1. Dairy Management
+</br>2. Meat Management
+</br>3. Infectious Diseases 
+</br>4. Livestock and Poultry Management
+</br>5. Pet and Zoo Animals
+</br>6. Surgery 
+</br>7. Gynecology 
+</br>8. Medicine and Pharmacy 
+</br>9. Vaccines and Vaccination Schedules 
+</br>10. Basic Feed and Fodder 
+</br>11. Laboratories
+        </p>
+<h4>Practical</h4>
+<p>
+Works in Government Hosiptals in Andhra Pradesh
+</br> Training by Government Doctors
+</br> Pregnancy Diagnosis
+</br> Artificial Insemination
+</br> Disease identification and treatment
+</br> Visit to Farm Visit(Poultry, Pig, Buffalo) 
+</p>
+
+        </p>
+
+        <span class="back-btn" onclick="backToCourses()">Back</span>
+    </div>
+
+</div>
+<!-- CONTACT -->
+<div id="contact" class="section">
+    <h2>Contact</h2>
+    <p>Email: bsnr.ap.alg@gmail.com</p>
+    <p>Phone: 9440777513, 9700675905</p>
+
+    <br>
+
+    <a href="https://maps.app.goo.gl/sM8NhprTXLGxbvwo6?g_st=aw" target="_blank">Location</a> |
+    <a href="https://www.instagram.com/bsnrm_college?igsh=dGcwMndzMXE4cmkz" target="_blank">Instagram</a>
+</div>
+</body>
+</html>
